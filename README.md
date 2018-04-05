@@ -12,7 +12,7 @@ python run.py -s <source directory path> -m 'flat|deep' -t <target docx file pat
 ```
 
 ```
-python run.py --source <source directory path> --mode \'flat|deep\' --target <target docx file path>\
+python run.py --source <source directory path> --mode 'flat|deep' --target <target docx file path>\
   --include <include extension of scanned files> --exclude <exclude extension of scanned files>\
   --encoding <encoding of the files>
 ```
