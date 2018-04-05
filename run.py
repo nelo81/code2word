@@ -51,3 +51,4 @@ if __name__ == '__main__':
       convert(presrc + dir + src[pos+1:], mode=mode, title=dir, include=include, exclude=exclude, encoding=encoding)
 
   doc.save(target)
+  print('\nfinish copying, your document is saved into \"'+target+'\" , thanks for your using!')

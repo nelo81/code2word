@@ -39,9 +39,11 @@ def walkflat(dir, inc, exc, encoding):
           if currentdir != thisdir:
             currentdir = thisdir
             doc.add_heading(thisdir, 2)
+            print('into directory '+thisdir)
           doc.add_heading(filepath[filepath.rfind('/')+1:], 3)
           doc.add_paragraph(content)
           doc.add_page_break()
+          print('copying '+filepath[filepath.rfind('/')+1:])
 
 def walkdeep(root, level, inc, exc, encoding):
   for file in os.listdir(root):
@@ -53,6 +55,8 @@ def walkdeep(root, level, inc, exc, encoding):
           doc.add_heading(filepath[filepath.rfind('/')+1:], level)
           doc.add_paragraph(content)
           doc.add_page_break()
+          print('copying '+filepath[filepath.rfind('/')+1:])
     else:
       doc.add_heading(file, level)
+      print('into directory '+file)
       walkdeep(filepath, level+1, inc, exc, encoding)
