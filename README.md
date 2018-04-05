@@ -17,6 +17,13 @@ python run.py --source <source directory path> --mode \'flat|deep\' --target <ta
   --encoding <encoding of the files>
 ```
 
+- 参数:
+-s : 代码项目文件夹路径
+-t : 目标 docx 文件路径
+-i : 扫描特定后缀名的文件
+-e : 不扫描特定后缀名的文件
+-c : 扫描到的文件编码(默认为 utf-8)
+
 - 例子:\
 `python .\run.py -s G:\xxx\yyy\*\src\main -m "deep" -t G:\test1.docx -i "java|yml"`
 
