@@ -22,9 +22,10 @@ python run.py --source <source directory path> --mode \'flat|deep\' --target <ta
 -t : 目标 docx 文件路径\
 -i : 扫描特定后缀名的文件\
 -e : 不扫描特定后缀名的文件\
--c : 扫描到的文件编码(默认为 utf-8)
+-c : 扫描到的文件编码(默认为 utf-8)\
+-m : flat表示只有具体扫描到的文件所在文件夹作为标题，deep表示每个文件夹都作为一个标题
 
 - 例子:\
 `python .\run.py -s G:\xxx\yyy\*\src\main -m "deep" -t G:\test1.docx -i "java|yml"`
 
-  其中 * 代表匹配所有文件夹，整个路径只能有一个 *
+  其中 * 代表匹配所有文件夹，这些文件夹各占一个标题，整个路径只能有一个 *
