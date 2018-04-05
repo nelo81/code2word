@@ -3,7 +3,7 @@ from docx import Document
 
 doc = Document()
 
-def convert(dir, title=None, include=None, exclude=None, encoding='utf-8'):
+def convert(dir, mode='flat', title=None, include=None, exclude=None, encoding='utf-8'):
   print('copy from diretory: ' + dir)
 
   if title is not None:
@@ -19,8 +19,16 @@ def convert(dir, title=None, include=None, exclude=None, encoding='utf-8'):
   else:
     exc=None
 
-  currentdir = ''
+  if mode == 'flat':
+    walkflat(dir, inc, exc, encoding)
+  elif mode == 'deep':
+    walkdeep(dir, 2, inc, exc, encoding)
+  else:
+    print('mode is invaild')
 
+
+def walkflat(dir, inc, exc, encoding):
+  currentdir = ''
   for root, dirs, files in os.walk(dir,False):
     for file in files:
       if (inc is None or os.path.splitext(file)[1][1:] in inc) and (exc is None or os.path.splitext(file)[1][1:] not in exc):
@@ -34,3 +42,17 @@ def convert(dir, title=None, include=None, exclude=None, encoding='utf-8'):
           doc.add_heading(filepath[filepath.rfind('/')+1:], 3)
           doc.add_paragraph(content)
           doc.add_page_break()
+
+def walkdeep(root, level, inc, exc, encoding):
+  for file in os.listdir(root):
+    filepath = os.path.join(root,file).replace('\\','/')
+    if os.path.isfile(filepath):
+      if (inc is None or os.path.splitext(file)[1][1:] in inc) and (exc is None or os.path.splitext(file)[1][1:] not in exc):
+        with open(filepath,encoding=encoding) as f:
+          content = f.read()
+          doc.add_heading(filepath[filepath.rfind('/')+1:], level)
+          doc.add_paragraph(content)
+          doc.add_page_break()
+    else:
+      doc.add_heading(file, level)
+      walkdeep(filepath, level+1, inc, exc, encoding)
