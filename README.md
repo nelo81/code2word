@@ -6,7 +6,7 @@
 
 - 使用方法:
 ```
-python run.py -s <source directory path> -m \'flat|deep\' -t <target docx file path>\
+python run.py -s <source directory path> -m 'flat|deep' -t <target docx file path>\
   -i <include extension of scanned files> -e <exclude extension of scanned files>\
   -c <encoding of the files>
 ```
