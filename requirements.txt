@@ -1,0 +1,2 @@
+python_docx==0.8.6
+docx==0.2.4

@@ -1,4 +1,5 @@
 import os
+import codecs
 from docx import Document
 
 doc = Document()
@@ -32,10 +33,12 @@ def walkflat(dir, inc, exc, encoding):
   currentdir = ''
   for root, dirs, files in os.walk(dir,False):
     for file in files:
+      if file == 'pom.xml':
+        print(1)
       if (inc is None or os.path.splitext(file)[1][1:] in inc) and (exc is None or os.path.splitext(file)[1][1:] not in exc):
         filepath = os.path.join(root,file).replace('\\','/')
         try:
-          with open(filepath,encoding=encoding) as f:
+          with codecs.open(filepath,encoding=encoding) as f:
             content = f.read()
             thisdir = filepath[len(dir)+1:filepath.rfind('/')]
             if currentdir != thisdir:
@@ -58,7 +61,7 @@ def walkdeep(root, level, inc, exc, encoding):
     if os.path.isfile(filepath):
       if (inc is None or os.path.splitext(file)[1][1:] in inc) and (exc is None or os.path.splitext(file)[1][1:] not in exc):
         try:
-          with open(filepath,encoding=encoding) as f:
+          with codecs.open(filepath,encoding=encoding) as f:
             content = f.read()
             doc.add_heading(filepath[filepath.rfind('/')+1:], level)
             doc.add_paragraph(content)

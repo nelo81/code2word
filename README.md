@@ -2,7 +2,7 @@
 
 - 环境准备:
 1. 安装 python 3.6
-2. 安装 python-docx: `pip install python-docx`
+2. 安装依赖: `pip install -r requirements.txt`
 
 - 使用方法:
 ```
@@ -12,7 +12,7 @@ python run.py -s <source directory path> -m 'flat|deep' -t <target docx file pat
 ```
 
 ```
-python run.py --source <source directory path> --mode 'flat|deep' --target <target docx file path>\
+python run.py  <source directory path> --mode 'flat|deep' --target <target docx file path>\
   --include <include extension of scanned files> --exclude <exclude extension of scanned files>\
   --encoding <encoding of the files>
 ```
