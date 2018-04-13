@@ -1,5 +1,5 @@
 import os, sys, getopt
-from converter import convert, doc
+from converter import convert, doc, errorlist
 
 if __name__ == '__main__':
 
@@ -52,3 +52,7 @@ if __name__ == '__main__':
 
   doc.save(target)
   print('\nfinish copying, your document is saved into \"'+target+'\" , thanks for your using!')
+  if len(errorlist) != 0:
+    print('\nerror file list:\n')
+    for e in errorlist:
+      print(e)
