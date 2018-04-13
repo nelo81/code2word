@@ -35,7 +35,7 @@ if __name__ == '__main__':
     elif opt in ('-e','--exclude'):
       exclude = arg
     elif opt in ('-c','--encoding'):
-      exclude = arg
+      encoding = arg
 
   if src is None or target is None:
     print('source and target is needed')
